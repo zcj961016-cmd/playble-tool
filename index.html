@@ -218,7 +218,7 @@ const CAT_ORDER = ['A','B','C','D','E','F','G','H'];
 const SK='playble_api_v1', HK='playble_hist_v1';
 let _AT='openai';
 function lSett(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch{return{}}}
-function gSett(){const s=lSett();return{apiType:s.apiType||'openai',baseUrl:s.baseUrl||'https://xxapi.ai789.icu/v1',apiKey:s.apiKey||'sk-HFnCX9APUDTNSsZN',model:s.model||'claude-opus-4-6-a'}}
+function gSett(){const s=lSett();return{apiType:s.apiType||'anthropic',baseUrl:s.baseUrl||'',apiKey:s.apiKey||'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',model:s.model||'claude-sonnet-4-6'}}
 function openSettings(){
   const s=gSett();_AT=s.apiType;
   document.getElementById('iUrl').value=s.baseUrl;
@@ -323,12 +323,12 @@ async function compressImg(file,m=1280){return new Promise((res,rej)=>{const r=n
 async function callAPI(dataUrl){
   const s=gSett();let resp;
   if(s.apiType==='anthropic'){
-    resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':s.apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:s.model||'claude-sonnet-4-5',max_tokens:6000,system:SYS,messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:'image/jpeg',data:dataUrl.split(',')[1]}},{type:'text',text:'分析这张图，按大类输出所有匹配玩法（只输出JSON）'}]}]})});
+    resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':s.apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:s.model||'claude-sonnet-4-5',max_tokens:8000,system:SYS,messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:'image/jpeg',data:dataUrl.split(',')[1]}},{type:'text',text:'分析这张图，按大类输出所有匹配玩法（只输出JSON）'}]}]})});
     if(!resp.ok){const e=await resp.json().catch(()=>({}));throw new Error(`Anthropic ${resp.status}: ${e.error?.message||JSON.stringify(e)}`)}
     const d=await resp.json();return parse(d.content?.[0]?.text);
   }else{
     const base=(s.baseUrl||'https://api.openai.com/v1').replace(/\/$/,'');
-    resp=await fetch(base+'/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+s.apiKey},body:JSON.stringify({model:s.model||'claude-sonnet-4-5',max_tokens:6000,messages:[{role:'system',content:SYS},{role:'user',content:[{type:'image_url',image_url:{url:dataUrl}},{type:'text',text:'分析这张图，按大类输出所有匹配玩法（只输出JSON）'}]}]})});
+    resp=await fetch(base+'/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+s.apiKey},body:JSON.stringify({model:s.model||'claude-sonnet-4-5',max_tokens:8000,messages:[{role:'system',content:SYS},{role:'user',content:[{type:'image_url',image_url:{url:dataUrl}},{type:'text',text:'分析这张图，按大类输出所有匹配玩法（只输出JSON）'}]}]})});
     if(!resp.ok){const e=await resp.json().catch(()=>({}));throw new Error(`API ${resp.status}: ${e.error?.message||JSON.stringify(e)}`)}
     const d=await resp.json();return parse(d.choices?.[0]?.message?.content);
   }
@@ -363,7 +363,13 @@ async function handleFile(file){
     const hash=await hashImg(dataUrl);
     ST.img={dataUrl,hash};
     ST.msg='AI 正在分析图片，按大类匹配玩法，约 15-20 秒...';render();
-    const r=await callAPI(dataUrl);
+    let r;
+    try{ r=await callAPI(dataUrl); }
+    catch(e1){
+      ST.msg='第一次失败，正在自动重试...';render();
+      await new Promise(res=>setTimeout(res,2000));
+      r=await callAPI(dataUrl);
+    }
     if(!r.categories)throw new Error('AI 返回数据缺少 categories 字段');
     // init scores
     CAT_ORDER.forEach(cat=>{
