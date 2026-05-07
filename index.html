@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -244,7 +245,7 @@ const JSONBIN_BIN_ID_KEY = 'playble_binid_v1'; // localStorage key for bin id
 const SK='playble_api_v1', HK='playble_hist_v1';
 let _AT='anthropic';
 function lSett(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch{return{}}}
-function gSett(){const s=lSett();return{apiType:s.apiType||'anthropic',baseUrl:s.baseUrl||'',apiKey:s.apiKey||'',model:s.model||'claude-sonnet-4-5'}}
+function gSett(){const s=lSett();return{apiType:s.apiType||'openai',baseUrl:s.baseUrl||'https://xxapi.ai789.icu/v1',apiKey:s.apiKey||'sk-HFnCX9APUDTNSsZN',model:s.model||'claude-opus-4-6-a'}}
 function openSettings(){
   const s=gSett();_AT=s.apiType;
   document.getElementById('iUrl').value=s.baseUrl;
