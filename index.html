@@ -26,18 +26,16 @@
   --green:#3dd68c;--green-bg:rgba(29,158,117,.12);
 }}
 body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;font-size:14px}
-.app{max-width:960px;margin:0 auto;padding:24px 20px 80px}
-/* header */
+.app{max-width:980px;margin:0 auto;padding:24px 20px 80px}
 .hdr{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);margin-bottom:20px}
 .logo{font-size:16px;font-weight:600;display:flex;align-items:center;gap:6px}
 .logo-dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
 .logo-sub{font-weight:400;font-size:13px;color:var(--text2)}
-.hdr-right{display:flex;align-items:center;gap:10px}
+.hdr-right{display:flex;align-items:center;gap:8px}
 .hdr-meta{font-size:12px;color:var(--text3);display:flex;gap:14px}
 .hdr-meta .stat{color:var(--text2);font-weight:500}
-.hdr-btn{height:30px;padding:0 12px;border-radius:8px;border:.5px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:5px;font-size:12px;font-family:inherit;transition:all .15s;white-space:nowrap}
-.hdr-btn:hover{background:var(--bg3);color:var(--text)}
-.hdr-btn.active{background:var(--accent-bg);color:var(--accent);border-color:var(--accent)}
+.hbtn{height:30px;padding:0 12px;border-radius:8px;border:.5px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;font-size:12px;font-family:inherit;transition:all .15s;white-space:nowrap}
+.hbtn:hover{background:var(--bg3);color:var(--text)}
 /* modal */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
 .overlay.hidden{display:none}
@@ -55,10 +53,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue'
 .fi:focus{border-color:var(--accent)}
 .fh{font-size:11px;color:var(--text3);margin-top:4px;line-height:1.55}
 .modal-btns{display:flex;gap:8px;margin-top:20px}
-.btn-test{padding:9px 16px;border-radius:var(--r);font-size:12px;font-weight:500;border:.5px solid var(--border2);background:var(--bg3);color:var(--text2);cursor:pointer;transition:all .15s;font-family:inherit}
-.btn-test:hover{background:var(--bg);color:var(--text)}
-.btn-save{flex:1;padding:9px;border-radius:var(--r);font-size:13px;font-weight:500;border:none;background:var(--text);color:var(--bg2);cursor:pointer;font-family:inherit;transition:opacity .15s}
-.btn-save:hover{opacity:.85}
+.btn-test{padding:9px 16px;border-radius:var(--r);font-size:12px;font-weight:500;border:.5px solid var(--border2);background:var(--bg3);color:var(--text2);cursor:pointer;font-family:inherit}
+.btn-save{flex:1;padding:9px;border-radius:var(--r);font-size:13px;font-weight:500;border:none;background:var(--text);color:var(--bg2);cursor:pointer;font-family:inherit}
 .tr{margin-top:10px;padding:9px 12px;border-radius:var(--r);font-size:12px;line-height:1.55}
 .tr.ok{background:var(--green-bg);color:var(--green)}
 .tr.err{background:rgba(214,47,47,.1);color:var(--red)}
@@ -72,7 +68,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue'
 .up-icon{font-size:32px;margin-bottom:8px;opacity:.45;line-height:1}
 .up-text{font-size:14px;margin-bottom:4px}
 .up-hint{font-size:12px;color:var(--text3)}
-/* loading / error */
+/* loading/error */
 .lc{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);padding:24px;margin-bottom:20px;text-align:center}
 .spin{display:inline-block;width:18px;height:18px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin-right:8px;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -80,99 +76,69 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue'
 .ec{background:var(--bg2);border:.5px solid var(--red);border-left:3px solid var(--red);border-radius:var(--r);padding:14px 16px;margin-bottom:16px}
 .et{font-size:13px;font-weight:500;color:var(--red);margin-bottom:4px}
 .eb{font-size:12px;color:var(--text2);line-height:1.65;word-break:break-word;white-space:pre-wrap}
-/* scene */
-.sc{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);padding:20px;margin-bottom:16px;display:grid;grid-template-columns:180px 1fr;gap:20px}
-@media(max-width:640px){.sc{grid-template-columns:1fr}.glist{grid-template-columns:1fr!important}}
-.sc-img{width:180px;height:180px;border-radius:var(--r);overflow:hidden;background:var(--bg3)}
+/* scene card */
+.sc{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);padding:20px;margin-bottom:16px;display:grid;grid-template-columns:160px 1fr;gap:20px}
+@media(max-width:600px){.sc{grid-template-columns:1fr}}
+.sc-img{width:160px;height:160px;border-radius:var(--r);overflow:hidden;background:var(--bg3);flex-shrink:0}
 .sc-img img{width:100%;height:100%;object-fit:cover}
 .sc-label{font-size:17px;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
 .sc-log{font-size:11px;color:var(--text3);line-height:1.7;padding:8px 12px;background:var(--bg3);border-radius:8px;margin-bottom:12px}
 .tag-row{display:flex;flex-wrap:wrap;gap:5px}
 .tag{font-size:11px;padding:3px 9px;border-radius:999px;background:var(--bg3);color:var(--text2);border:.5px solid var(--border)}
-/* history bar */
-.hb{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--bg4);border:.5px solid var(--border);border-radius:var(--r);margin-bottom:14px;font-size:12px}
-.hb .hl{color:var(--text2)} .hb .hr{color:var(--text);font-weight:500}
+/* tabs */
+.tabs-wrap{display:flex;overflow-x:auto;gap:0;border-bottom:.5px solid var(--border);margin-bottom:16px;scrollbar-width:none}
+.tabs-wrap::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-start;padding:10px 16px 12px;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;margin-bottom:-1px;gap:2px;min-width:80px}
+.tab.active{border-bottom-color:var(--tab-color)}
+.tab.disabled{opacity:.35;cursor:not-allowed;pointer-events:none}
+.tab-letter{font-size:13px;font-weight:700;color:var(--tab-color);opacity:.5;transition:opacity .15s}
+.tab.active .tab-letter{opacity:1}
+.tab-name{font-size:12px;font-weight:500;color:var(--text2);white-space:nowrap}
+.tab.active .tab-name{color:var(--text)}
+.tab-count{font-size:10px;color:var(--text3);white-space:nowrap}
+/* cat info bar */
+.cat-bar{padding:12px 16px;border-radius:var(--r);border-left:3px solid var(--tab-color);background:var(--bg2);margin-bottom:14px}
+.cat-bar-title{font-size:12px;font-weight:600;color:var(--tab-color);margin-bottom:3px}
+.cat-bar-desc{font-size:12px;color:var(--text2);line-height:1.6}
 /* gameplay cards grid */
-.glist{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
-.gc{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);padding:16px 18px;transition:border-color .15s;display:flex;flex-direction:column}
+.glist{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:600px){.glist{grid-template-columns:1fr}}
+.gc{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);padding:14px 16px;display:flex;flex-direction:column;transition:border-color .15s}
 .gc.wild{border-color:rgba(186,117,23,.35)}
-.gph{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap}
-.gptr{display:flex;align-items:center;gap:7px;flex:1;min-width:0;flex-wrap:wrap}
+.gph{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.gptr{display:flex;align-items:center;gap:7px;flex-wrap:wrap;flex:1;min-width:0}
 .gpb{font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;letter-spacing:.02em;flex-shrink:0}
-.bA{background:rgba(124,111,255,.15);color:var(--accent)}
-.bB{background:rgba(29,158,117,.15);color:var(--green)}
-.bC{background:rgba(216,90,48,.15);color:var(--coral)}
-.bD{background:rgba(55,138,221,.15);color:#378add}
-.bE{background:rgba(186,117,23,.15);color:var(--amber)}
-.bF{background:rgba(99,153,34,.15);color:#639922}
-.bG{background:rgba(24,95,165,.15);color:#185fa5}
-.bH{background:rgba(212,83,126,.15);color:#d4537e}
-.bW{background:rgba(186,117,23,.18);color:var(--amber)}
-.gptier{font-size:10px;font-weight:500;padding:1px 6px;border-radius:4px;background:var(--bg3);color:var(--text3);text-transform:uppercase;letter-spacing:.04em;flex-shrink:0}
+.gptier{font-size:10px;padding:1px 6px;border-radius:4px;background:var(--bg3);color:var(--text3);text-transform:uppercase;letter-spacing:.04em;flex-shrink:0}
 .gpname{font-size:13px;font-weight:600}
-.gpact{display:flex;gap:4px;flex-shrink:0}
-.ib{width:26px;height:26px;border-radius:6px;border:.5px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s}
-.ib:hover{background:var(--bg3);color:var(--text)}
-.ib.del:hover{color:var(--red);border-color:var(--red)}
-.gpdesc{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:8px;flex:1}
-.gpsec{font-size:11px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin-bottom:4px;margin-top:8px}
-.gpflow,.gpeg{font-size:12px;color:var(--text2);line-height:1.65;padding:8px 10px;background:var(--bg4);border-radius:6px;margin-bottom:6px}
-/* expand */
-.xbtn{font-size:11px;color:var(--text3);cursor:pointer;user-select:none;padding:3px 0 6px;display:inline-flex;align-items:center;gap:3px;transition:color .15s;background:none;border:none;font-family:inherit}
+.gpdesc{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:6px;flex:1}
+.gpsec{font-size:10px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin-bottom:3px;margin-top:8px}
+.gpflow,.gpeg{font-size:12px;color:var(--text2);line-height:1.65;padding:7px 10px;background:var(--bg4);border-radius:6px;margin-bottom:6px}
+.xbtn{font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;padding:3px 0 6px;font-family:inherit;display:inline-flex;align-items:center;gap:3px}
 .xbtn:hover{color:var(--text2)}
 /* scores */
-.sr{display:flex;align-items:center;gap:10px;padding-top:10px;border-top:.5px solid var(--border);margin-top:auto}
+.sr{display:flex;align-items:center;gap:8px;padding-top:10px;border-top:.5px solid var(--border);margin-top:auto}
 .slbl{font-size:12px;color:var(--text3);flex-shrink:0}
 .sdots{display:flex;gap:5px}
 .sd{width:16px;height:16px;border-radius:50%;background:var(--bg3);border:.5px solid var(--border);cursor:pointer;transition:all .12s}
 .sd:hover{transform:scale(1.2)}
 .sd.on{background:var(--amber);border-color:var(--amber)}
 /* submit bar */
-.submit-bar{margin-top:12px;padding:14px 18px;background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.submit-bar{margin-top:12px;padding:14px 18px;background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .name-input{flex:1;min-width:120px;padding:8px 12px;border:.5px solid var(--border2);border-radius:var(--r);background:var(--bg3);color:var(--text);font-family:inherit;font-size:13px;outline:none}
-.name-input:focus{border-color:var(--accent)}
 .name-input::placeholder{color:var(--text3)}
-/* action row */
-.ar{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+/* btns */
 .btn{padding:9px 16px;font-size:12.5px;border-radius:var(--r);border:.5px solid var(--border2);background:var(--bg2);color:var(--text);cursor:pointer;font-family:inherit;font-weight:500;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
 .btn:hover{background:var(--bg3)}
 .btn:disabled{opacity:.4;cursor:not-allowed}
 .btn.pri{background:var(--text);color:var(--bg2);border-color:var(--text)}
 .btn.pri:hover{opacity:.85}
-.btn.green{background:var(--green);color:#fff;border-color:var(--green)}
-.btn.green:hover{opacity:.88}
-.btn.green:disabled{opacity:.4}
-/* add slot */
-.addslot{padding:14px;border:1.5px dashed var(--border2);border-radius:var(--r);text-align:center;cursor:pointer;color:var(--text2);font-size:13px;transition:all .15s;grid-column:1/-1}
-.addslot:hover{border-color:var(--accent);color:var(--accent)}
-/* history detail */
-.hd{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-top:12px;font-size:12px}
-.hdr2{font-size:11px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin-bottom:8px}
-.hrow{display:flex;justify-content:space-between;padding:6px 0;border-bottom:.5px solid var(--border)}
-.hrow:last-child{border-bottom:none}
-.htime{color:var(--text3)} .hsc{color:var(--text);font-weight:500}
-/* editor */
-.ea label{display:block;font-size:11px;color:var(--text3);margin-bottom:3px;margin-top:8px;text-transform:uppercase;letter-spacing:.04em;font-weight:500}
-.ea label:first-child{margin-top:0}
-.ea input,.ea textarea,.ea select{width:100%;font-family:inherit;font-size:13px;padding:8px 10px;border:.5px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);resize:vertical}
-.ea textarea{min-height:50px}
-.ea .fr{display:grid;grid-template-columns:80px 80px 1fr;gap:8px}
-.ea .fr select,.ea .fr input{padding:6px 8px}
-.ea-btns{display:flex;gap:6px;margin-top:10px}
-/* shared scores panel */
-.panel{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);padding:20px;margin-bottom:16px}
-.panel-title{font-size:15px;font-weight:600;margin-bottom:16px}
-.sr-item{padding:12px 0;border-bottom:.5px solid var(--border)}
-.sr-item:last-child{border-bottom:none}
-.sr-item-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
-.sr-item-name{font-size:13px;font-weight:500}
-.sr-item-meta{font-size:11px;color:var(--text3)}
-.sr-item-gps{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.sr-gp-chip{font-size:11px;padding:3px 9px;border-radius:999px;background:var(--bg3);color:var(--text2);display:flex;align-items:center;gap:5px}
-.sr-gp-dots{display:flex;gap:2px}
-.sr-gp-dot{width:8px;height:8px;border-radius:50%;background:var(--bg4);border:.5px solid var(--border)}
-.sr-gp-dot.on{background:var(--amber);border-color:var(--amber)}
-.empty-tip{text-align:center;padding:30px;color:var(--text3);font-size:13px}
+.btn.grn{background:var(--green);color:#fff;border-color:var(--green)}
+.btn.grn:hover{opacity:.88}
+/* scores panel */
+.sp-item{padding:14px 0;border-bottom:.5px solid var(--border)}
+.sp-item:last-child{border-bottom:none}
+.sp-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.sp-chip{font-size:11px;padding:3px 10px;border-radius:999px;background:var(--bg3);color:var(--text2);display:flex;align-items:center;gap:5px}
 /* toast */
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg2);padding:10px 18px;border-radius:8px;font-size:13px;z-index:300;animation:fu .25s ease}
 @keyframes fu{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
@@ -180,19 +146,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue'
 </head>
 <body>
 <div class="app">
+
 <div class="hdr">
   <div class="logo"><div class="logo-dot"></div>Playble <span class="logo-sub">玩法验证</span></div>
   <div class="hdr-right">
     <div class="hdr-meta">
       <span>已测试 <span class="stat" id="totalStat">0</span> 张</span>
-      <span>最佳版 <span class="stat" id="bestStat">0</span> 个</span>
     </div>
-    <button class="hdr-btn" id="scoresPanelBtn" onclick="toggleScoresPanel()">📊 所有人评分</button>
-    <button class="hdr-btn" onclick="openSettings()" title="API 设置">⚙ 设置</button>
+    <button class="hbtn" id="scoresPanelBtn" onclick="toggleScores()">📊 所有人评分</button>
+    <button class="hbtn" onclick="openSettings()">⚙ 设置</button>
   </div>
 </div>
+
 <div id="configBanner"></div>
 <div id="scoresPanel" style="display:none"></div>
+
 <div class="upz" id="upz">
   <div class="up-icon">⊕</div>
   <div class="up-text">点击上传 或 拖拽图片到这里</div>
@@ -214,7 +182,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue'
   <div id="urlRow">
     <div class="fl">Base URL</div>
     <input class="fi" id="iUrl" type="text" placeholder="https://api.xxx.com/v1">
-    <div class="fh">三方 API 地址</div>
   </div>
   <div class="fl">API Key</div>
   <input class="fi" id="iKey" type="password" placeholder="sk-ant-... 或三方 key">
@@ -230,20 +197,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue'
 </div>
 
 <script>
-// ════════════════════════════════════════════════
-// CONFIG
-// ════════════════════════════════════════════════
-// JSONBin 共享评分存储 — 填入你的 Master Key 和 Bin ID
-// 1. 注册 jsonbin.io 拿到 Master Key
-// 2. 第一次运行后会自动创建 Bin，之后 BIN_ID 会自动保存到 localStorage
-const JSONBIN_KEY = '$2a$10$vNzHXAT56oRMtJgVwmzcCOR4Ql8uESU/vUpjSA4oHvvw7NCbvQGvC'; // 替换这里
-const JSONBIN_BIN_ID_KEY = 'playble_binid_v1'; // localStorage key for bin id
+// ── CONFIG ──
+const GOOGLE_SCRIPT_URL = ''; // 留空，后续填入 Google Apps Script URL
 
-// ════════════════════════════════════════════════
-// SETTINGS
-// ════════════════════════════════════════════════
+// ── CAT INFO ──
+const CATS = {
+  A:{name:'Reveal',zh:'猜谜解密',color:'#7C6FFF',desc:'信息已存在但被遮挡，操作只是揭露它。答案是预设的，不是AI实时生成的。'},
+  B:{name:'Transform',zh:'元素替换',color:'#1D9E75',desc:'图片里的原有元素被AI生成的新内容替换，原元素消失。结果是内容不同的新图。'},
+  C:{name:'Morph',zh:'形态变化',color:'#D85A30',desc:'元素自身物理形态变化——大小、形状、维度。操作连续可控，实时响应。'},
+  D:{name:'Move',zh:'位置移动',color:'#378ADD',desc:'元素从A位置移动到B位置，形态本身不变，只是位置改变。'},
+  E:{name:'Feed',zh:'持续累积',color:'#BA7517',desc:'单次操作不完整，需重复累积才能推进状态，有进度条/里程碑/MAX特效。'},
+  F:{name:'Add',zh:'补充新元素',color:'#639922',desc:'在原图基础上叠加新内容，原有元素保留不变，只是「增加了东西」。'},
+  G:{name:'Score',zh:'评分测试',color:'#185FA5',desc:'图片触发AI评估，得到关于图片内容的分数、标签或判断。单人即可完成。'},
+  H:{name:'Social',zh:'多人社交',color:'#D4537E',desc:'必须有多人参与才能成立，单人无法完整体验。结果取决于多人共同行为。'},
+};
+const WILD = {name:'彩蛋',zh:'专属定制',color:'#BA7517'};
+const CAT_ORDER = ['A','B','C','D','E','F','G','H'];
+
+// ── SETTINGS ──
 const SK='playble_api_v1', HK='playble_hist_v1';
-let _AT='anthropic';
+let _AT='openai';
 function lSett(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch{return{}}}
 function gSett(){const s=lSett();return{apiType:s.apiType||'openai',baseUrl:s.baseUrl||'https://xxapi.ai789.icu/v1',apiKey:s.apiKey||'sk-HFnCX9APUDTNSsZN',model:s.model||'claude-opus-4-6-a'}}
 function openSettings(){
@@ -281,7 +254,7 @@ async function testConn(){
     }
     if(r.ok){re.innerHTML='<div class="tr ok">✓ 连接成功！</div>'}
     else{const e=await r.json().catch(()=>({}));re.innerHTML=`<div class="tr err">✗ ${e.error?.message||'HTTP '+r.status}</div>`}
-  }catch(e){re.innerHTML=`<div class="tr err">✗ 网络/CORS 错误：${e.message}</div>`}
+  }catch(e){re.innerHTML=`<div class="tr err">✗ ${e.message}</div>`}
 }
 function saveSett(){
   const key=document.getElementById('iKey').value.trim();
@@ -290,124 +263,72 @@ function saveSett(){
   closeSettings();checkConfig();toast('设置已保存');
 }
 
-// ════════════════════════════════════════════════
-// JSONBIN — 共享评分存储
-// ════════════════════════════════════════════════
-const JBIN_BASE = 'https://api.jsonbin.io/v3';
+// ── SYSTEM PROMPT ──
+const SYS=`你是 Playble 的「图片玩法规则引擎」。用户上传一张图片，分析内容后按 A-H 八大类输出所有能匹配的玩法，以及专属彩蛋。
 
-async function jbinGetBinId(){
-  let id = localStorage.getItem(JSONBIN_BIN_ID_KEY);
-  if(id) return id;
-  // 创建新 Bin
-  const r = await fetch(`${JBIN_BASE}/b`, {
-    method:'POST',
-    headers:{'Content-Type':'application/json','X-Master-Key':JSONBIN_KEY,'X-Bin-Name':'playble-scores','X-Bin-Private':'false'},
-    body: JSON.stringify({scores:[]})
-  });
-  if(!r.ok) throw new Error('创建共享存储失败：' + r.status);
-  const d = await r.json();
-  id = d.metadata.id;
-  localStorage.setItem(JSONBIN_BIN_ID_KEY, id);
-  return id;
-}
+## 玩法大类（A-H）
+A·Reveal·猜谜解密 — 刮刮乐、找彩蛋、谁是卧底、心声解锁（信息已存在只是被遮挡）
+B·Transform·元素替换 — 换发型、换装、平行宇宙、穿越时间线（AI替换原有元素）
+C·Morph·形态变化 — 捏脸变形、万物液化、景深3D、元素缩放（形态变了没搬家）
+D·Move·位置移动 — 重力滑落、克隆铺满、拖拽位移、重排合照（搬家了形态没变）
+E·Feed·持续累积 — 撸猫满意度、喂饭变胖、干杯计数、辣度挑战（必须重复累积）
+F·Add·补充新元素 — 补全世界、天气魔法、新增装饰、活图配乐（叠加新内容原图保留）
+G·Score·评分测试 — 颜值评分、穿搭测评、心情天气、关系亲密度（AI实时评判）
+H�Social·多人参与 — 投票、合力达成、接龙改图、匿名吐槽（少了别人就不成立）
 
-async function jbinRead(){
-  if(JSONBIN_KEY === 'YOUR_JSONBIN_MASTER_KEY') return [];
-  try{
-    const id = await jbinGetBinId();
-    const r = await fetch(`${JBIN_BASE}/b/${id}/latest`,{headers:{'X-Master-Key':JSONBIN_KEY}});
-    if(!r.ok) return [];
-    const d = await r.json();
-    return d.record?.scores || [];
-  }catch{return []}
-}
-
-async function jbinAppend(entry){
-  if(JSONBIN_KEY === 'YOUR_JSONBIN_MASTER_KEY'){
-    toast('⚠ 请先配置 JSONBIN_KEY 才能提交共享评分');
-    return false;
-  }
-  try{
-    const id = await jbinGetBinId();
-    const current = await jbinRead();
-    current.push(entry);
-    const r = await fetch(`${JBIN_BASE}/b/${id}`,{
-      method:'PUT',
-      headers:{'Content-Type':'application/json','X-Master-Key':JSONBIN_KEY},
-      body: JSON.stringify({scores: current})
-    });
-    return r.ok;
-  }catch(e){
-    console.error(e);
-    return false;
-  }
-}
-
-// ════════════════════════════════════════════════
-// SYSTEM PROMPT
-// ════════════════════════════════════════════════
-const SYS=`你是 Playble 的「图片玩法规则引擎」。用户上传一张图片，你需要分析图片内容并匹配玩法。
-
-## 玩法大类体系（A-H 共 8 类）
-
-按「用户操作后得到什么」分类，互不重叠：
-
-- A · Reveal · 猜谜解密 — 刮刮乐、找彩蛋、谁是卧底、心声解锁
-- B · Transform · 元素替换 — 换发型、换装、平行宇宙、穿越时间线
-- C · Morph · 形态变化 — 捏脸、液化、3D 景深、缩放
-- D · Move · 位置移动 — 重力滑落、克隆铺满、拖拽位移
-- E · Feed · 持续累积 — 撸猫满意度、喂饭变胖、干杯计数、辣度挑战
-- F · Add · 补充新元素 — 补全世界、天气魔法、新增装饰、活图
-- G · Score · 评分测试 — 颜值评分、穿搭测评、心情天气、关系亲密度
-- H · Social · 多人参与 — 投票、合力达成、接龙、匿名吐槽
-
-## 判定流程（按顺序）
-1.需要多人→H 2.得到评分→G 3.得到隐藏信息→A 4.元素被替换→B 5.叠加新内容→F 6.形态变了没搬家→C 7.位置搬家了→D 8.必须重复累积→E
+## 判定流程
+1.多人才能成立→H 2.得到评分结果→G 3.得到隐藏信息→A 4.元素被替换→B 5.叠加新内容→F 6.形态变了没搬家→C 7.位置搬家了→D 8.必须重复累积→E
 
 ## 输出格式（严格JSON，只输出JSON）
 
-{"scene_label":"一句话描述（不超过15字）","rule_log":"一句话说明规则触发路径","tags":["标签1","标签2","标签3"],"gameplays":[{"tier":"core","category":"A","id":"如A2","name":"玩法名称（中文，不超过8字）","description":"一句话说清楚玩法，口语化，不超过30字，让普通用户立刻看懂","flow":"交互流程用→分隔","specific_example":"针对这张图的极具体示例"}]}
+{
+  "scene_label": "一句话描述这张图（不超过15字）",
+  "rule_log": "一句话说明识别到的关键元素和规则触发路径",
+  "tags": ["标签1","标签2","标签3"],
+  "categories": {
+    "A": [{"id":"A1","name":"玩法名（不超过8字）","description":"一句话口语化描述，不超过30字，让普通用户立刻看懂","flow":"流程用→分隔","specific_example":"针对这张图的极具体示例"}],
+    "B": [],
+    "C": [{"id":"C2","name":"捏脸变形","description":"...","flow":"...","specific_example":"..."}],
+    "D": [],
+    "E": [],
+    "F": [],
+    "G": [],
+    "H": [],
+    "wild": [{"id":"彩蛋","name":"彩蛋名（不超过10字）","description":"一句话描述，必须基于这张图独有细节，换图就失效","flow":"...","specific_example":"..."}]
+  }
+}
 
 规则：
-- gameplays 正好5个：2个core→2个extend→1个wild
-- wild的id填「彩蛋」，必须基于这张图独有细节，换图就失效
-- description必须口语化一句话，不超过30字
-- 只输出JSON，不要markdown标记`;
+- 每个大类放尽可能多的匹配玩法，没有匹配的大类留空数组[]
+- wild彩蛋必须基于这张图独有的细节，换张图就失效
+- description必须口语化一句话不超过30字
+- 只输出JSON不要markdown标记不要前置文字`;
 
-// ════════════════════════════════════════════════
-// STATE
-// ════════════════════════════════════════════════
-const ST={img:null,result:null,loading:false,msg:'',err:null,submitting:false,showScores:false};
+// ── STATE ──
+const ST={img:null,result:null,loading:false,msg:'',err:null,activeTab:'A',expanded:{},submitting:false,showScores:false};
 
-// ════════════════════════════════════════════════
-// LOCAL HISTORY
-// ════════════════════════════════════════════════
+// ── HISTORY ──
 function lHist(){try{return JSON.parse(localStorage.getItem(HK))||{}}catch{return{}}}
 function sHist(d){localStorage.setItem(HK,JSON.stringify(d));updStats()}
 function updStats(){
   const d=lHist();
   document.getElementById('totalStat').textContent=Object.values(d).reduce((s,i)=>s+(i.records?.length||0),0);
-  document.getElementById('bestStat').textContent=Object.values(d).filter(i=>i.best).length;
 }
 
-// ════════════════════════════════════════════════
-// IMAGE
-// ════════════════════════════════════════════════
+// ── IMAGE ──
 async function hashImg(u){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(u));return Array.from(new Uint8Array(b)).slice(0,12).map(x=>x.toString(16).padStart(2,'0')).join('')}
 async function compressImg(file,m=1280){return new Promise((res,rej)=>{const r=new FileReader();r.onload=e=>{const i=new Image();i.onload=()=>{let{width:w,height:h}=i;if(w>m||h>m){if(w>h){h=h*m/w;w=m}else{w=w*m/h;h=m}}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(i,0,0,w,h);res(c.toDataURL('image/jpeg',.85))};i.onerror=rej;i.src=e.target.result};r.onerror=rej;r.readAsDataURL(file)})}
 
-// ════════════════════════════════════════════════
-// API CALL
-// ════════════════════════════════════════════════
+// ── API ──
 async function callAPI(dataUrl){
   const s=gSett();let resp;
   if(s.apiType==='anthropic'){
-    resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':s.apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:s.model||'claude-sonnet-4-5',max_tokens:4096,system:SYS,messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:'image/jpeg',data:dataUrl.split(',')[1]}},{type:'text',text:'分析这张图，输出5个玩法（只输出JSON）'}]}]})});
+    resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':s.apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:s.model||'claude-sonnet-4-5',max_tokens:6000,system:SYS,messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:'image/jpeg',data:dataUrl.split(',')[1]}},{type:'text',text:'分析这张图，按大类输出所有匹配玩法（只输出JSON）'}]}]})});
     if(!resp.ok){const e=await resp.json().catch(()=>({}));throw new Error(`Anthropic ${resp.status}: ${e.error?.message||JSON.stringify(e)}`)}
     const d=await resp.json();return parse(d.content?.[0]?.text);
   }else{
     const base=(s.baseUrl||'https://api.openai.com/v1').replace(/\/$/,'');
-    resp=await fetch(base+'/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+s.apiKey},body:JSON.stringify({model:s.model||'claude-sonnet-4-5',max_tokens:4096,messages:[{role:'system',content:SYS},{role:'user',content:[{type:'image_url',image_url:{url:dataUrl}},{type:'text',text:'分析这张图，输出5个玩法（只输出JSON）'}]}]})});
+    resp=await fetch(base+'/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+s.apiKey},body:JSON.stringify({model:s.model||'claude-sonnet-4-5',max_tokens:6000,messages:[{role:'system',content:SYS},{role:'user',content:[{type:'image_url',image_url:{url:dataUrl}},{type:'text',text:'分析这张图，按大类输出所有匹配玩法（只输出JSON）'}]}]})});
     if(!resp.ok){const e=await resp.json().catch(()=>({}));throw new Error(`API ${resp.status}: ${e.error?.message||JSON.stringify(e)}`)}
     const d=await resp.json();return parse(d.choices?.[0]?.message?.content);
   }
@@ -418,18 +339,14 @@ function parse(raw){
   try{return JSON.parse(t)}catch{throw new Error('AI 返回的不是有效 JSON\n\n'+t.substring(0,500))}
 }
 
-// ════════════════════════════════════════════════
-// CONFIG CHECK
-// ════════════════════════════════════════════════
+// ── CONFIG CHECK ──
 function checkConfig(){
   const s=gSett(),b=document.getElementById('configBanner');
   if(!s.apiKey){b.innerHTML='<div class="banner">⚠ 还未设置 API Key。请点击右上角 <a onclick="openSettings()">⚙ 设置</a>。</div>';return false}
   b.innerHTML='';return true;
 }
 
-// ════════════════════════════════════════════════
-// UPLOAD
-// ════════════════════════════════════════════════
+// ── UPLOAD ──
 const upz=document.getElementById('upz'),fi=document.getElementById('fileInput');
 upz.addEventListener('click',()=>fi.click());
 fi.addEventListener('change',e=>{if(e.target.files[0])handleFile(e.target.files[0])});
@@ -438,24 +355,28 @@ upz.addEventListener('dragleave',()=>upz.classList.remove('dov'));
 upz.addEventListener('drop',e=>{e.preventDefault();upz.classList.remove('dov');if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0])});
 
 async function handleFile(file){
-  if(!file.type.startsWith('image/')){ST.err='请上传图片文件';render();return}
+  if(!file?.type.startsWith('image/')){ST.err='请上传图片文件';render();return}
   if(!checkConfig()){openSettings();return}
-  ST.err=null;ST.loading=true;ST.msg='正在压缩图片...';ST.result=null;render();
+  ST.err=null;ST.loading=true;ST.msg='正在压缩图片...';ST.result=null;ST.expanded={};render();
   try{
     const dataUrl=await compressImg(file);
     const hash=await hashImg(dataUrl);
     ST.img={dataUrl,hash};
-    ST.msg='正在调用 AI 分析图片，预计 5-15 秒...';render();
+    ST.msg='AI 正在分析图片，按大类匹配玩法，约 15-20 秒...';render();
     const r=await callAPI(dataUrl);
-    if(!r.gameplays||!Array.isArray(r.gameplays))throw new Error('AI 返回数据缺少 gameplays 字段');
-    r.gameplays.forEach(g=>{g.score=0;g._exp=false;g._ed=false});
+    if(!r.categories)throw new Error('AI 返回数据缺少 categories 字段');
+    // init scores
+    CAT_ORDER.forEach(cat=>{
+      (r.categories[cat]||[]).forEach(g=>{g.score=0});
+    });
+    (r.categories.wild||[]).forEach(g=>{g.score=0});
+    // find first active tab
+    ST.activeTab = CAT_ORDER.find(c=>(r.categories[c]||[]).length>0) || 'A';
     ST.result=r;ST.loading=false;render();autoSave();
   }catch(e){ST.loading=false;ST.err=e.message;console.error(e);render()}
 }
 
-// ════════════════════════════════════════════════
-// LOCAL HISTORY OPS
-// ════════════════════════════════════════════════
+// ── HISTORY OPS ──
 function autoSave(){
   if(!ST.img||!ST.result)return;
   const d=lHist(),h=ST.img.hash;
@@ -472,129 +393,96 @@ function saveAsBest(){
 }
 async function regen(){
   if(!ST.img)return;
-  ST.loading=true;ST.msg='正在重新生成玩法...';ST.err=null;render();
+  ST.loading=true;ST.msg='正在重新生成...';ST.err=null;render();
   try{
     const r=await callAPI(ST.img.dataUrl);
-    r.gameplays.forEach(g=>{g.score=0;g._exp=false;g._ed=false});
-    ST.result=r;ST.loading=false;render();autoSave();
+    CAT_ORDER.forEach(cat=>{(r.categories[cat]||[]).forEach(g=>{g.score=0})});
+    (r.categories.wild||[]).forEach(g=>{g.score=0});
+    ST.activeTab=CAT_ORDER.find(c=>(r.categories[c]||[]).length>0)||'A';
+    ST.result=r;ST.loading=false;ST.expanded={};render();autoSave();
   }catch(e){ST.loading=false;ST.err=e.message;render()}
 }
 
-// ════════════════════════════════════════════════
-// SUBMIT SHARED SCORE
-// ════════════════════════════════════════════════
+// ── SCORE & INTERACT ──
+function setScore(cat,i,v){
+  const gps=ST.result.categories[cat];
+  gps[i].score=gps[i].score===v?v-1:v;
+  if(gps[i].score<0)gps[i].score=0;
+  render();
+}
+function toggleExp(key){ST.expanded[key]=!ST.expanded[key];render()}
+function switchTab(tab){ST.activeTab=tab;render()}
+
+// ── SUBMIT ──
 async function submitScore(){
-  if(!ST.result||!ST.img){toast('没有可提交的内容');return}
+  if(!ST.result){toast('没有可提交的内容');return}
   const nameEl=document.getElementById('submitterName');
   const name=(nameEl?.value||'').trim()||'匿名';
-  const hasScore=ST.result.gameplays.some(g=>g.score>0);
-  if(!hasScore){toast('请先给至少一个玩法打分');return}
-  ST.submitting=true;render();
-  const entry={
-    ts:Date.now(),
-    submitter:name,
-    scene_label:ST.result.scene_label,
-    img_hash:ST.img.hash,
-    gameplays:ST.result.gameplays.map(g=>({name:g.name,tier:g.tier,score:g.score}))
-  };
-  const ok=await jbinAppend(entry);
-  ST.submitting=false;
-  if(ok){toast('✓ 评分已提交！');render()}
-  else{toast('提交失败，请检查 JSONBIN_KEY 配置');render()}
-}
-
-// ════════════════════════════════════════════════
-// SHARED SCORES PANEL
-// ════════════════════════════════════════════════
-let _scoresCache=null;
-
-async function toggleScoresPanel(){
-  ST.showScores=!ST.showScores;
-  const btn=document.getElementById('scoresPanelBtn');
-  btn.classList.toggle('active',ST.showScores);
-  if(ST.showScores){
-    renderScoresPanel('loading');
-    _scoresCache=await jbinRead();
-    renderScoresPanel();
-  }else{
-    document.getElementById('scoresPanel').style.display='none';
-  }
-}
-
-function renderScoresPanel(state){
-  const el=document.getElementById('scoresPanel');
-  el.style.display='block';
-  if(state==='loading'){
-    el.innerHTML='<div class="panel"><div class="panel-title">📊 所有人的评分记录</div><div class="empty-tip"><span class="spin"></span> 加载中...</div></div>';
-    return;
-  }
-  if(JSONBIN_KEY==='YOUR_JSONBIN_MASTER_KEY'){
-    el.innerHTML='<div class="panel"><div class="panel-title">📊 所有人的评分记录</div><div class="empty-tip">⚠ 请先在文件里配置 <strong>JSONBIN_KEY</strong> 才能使用共享评分功能。</div></div>';
-    return;
-  }
-  const scores=_scoresCache||[];
-  if(!scores.length){
-    el.innerHTML='<div class="panel"><div class="panel-title">📊 所有人的评分记录</div><div class="empty-tip">还没有人提交过评分，上传图片打分后点「提交评分」吧。</div></div>';
-    return;
-  }
-  // Group by img_hash
-  const byImg={};
-  scores.forEach(s=>{
-    const k=s.img_hash||'unknown';
-    if(!byImg[k])byImg[k]={label:s.scene_label,entries:[]};
-    byImg[k].entries.push(s);
-  });
-  let rows='';
-  Object.values(byImg).reverse().forEach(group=>{
-    const label=group.label||'未知图片';
-    rows+=`<div class="sr-item"><div class="sr-item-top"><div class="sr-item-name">${esc(label)}</div><div class="sr-item-meta">${group.entries.length} 条评分</div></div>`;
-    group.entries.forEach(e=>{
-      const dt=new Date(e.ts);
-      const time=`${dt.getMonth()+1}/${dt.getDate()} ${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`;
-      const chips=(e.gameplays||[]).map(g=>{
-        const dots=[1,2,3,4,5].map(n=>`<div class="sr-gp-dot${n<=g.score?' on':''}"></div>`).join('');
-        return`<div class="sr-gp-chip">${esc(g.name)}<div class="sr-gp-dots">${dots}</div></div>`;
-      }).join('');
-      rows+=`<div style="margin-top:8px"><div style="font-size:11px;color:var(--text3);margin-bottom:4px">${esc(e.submitter||'匿名')} · ${time}</div><div class="sr-item-gps">${chips}</div></div>`;
+  // collect all scores
+  const allGps=[];
+  CAT_ORDER.forEach(cat=>{
+    (ST.result.categories[cat]||[]).forEach(g=>{
+      if(g.score>0)allGps.push({cat,name:g.name,score:g.score});
     });
-    rows+='</div>';
   });
-  el.innerHTML=`<div class="panel"><div class="panel-title">📊 所有人的评分记录 <span style="font-size:12px;font-weight:400;color:var(--text3)">共 ${scores.length} 条</span></div>${rows}</div>`;
+  (ST.result.categories.wild||[]).forEach(g=>{
+    if(g.score>0)allGps.push({cat:'wild',name:g.name,score:g.score});
+  });
+  if(!allGps.length){toast('请先给至少一个玩法打分');return}
+  ST.submitting=true;render();
+
+  if(GOOGLE_SCRIPT_URL){
+    try{
+      const payload={submitter:name,scene_label:ST.result.scene_label,gameplays:allGps};
+      await fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      toast('✓ 评分已提交！');
+    }catch(e){toast('提交失败：'+e.message)}
+  }else{
+    // fallback: save to localStorage shared key
+    try{
+      const key='playble_shared_scores';
+      const existing=JSON.parse(localStorage.getItem(key)||'[]');
+      existing.push({ts:Date.now(),submitter:name,scene_label:ST.result.scene_label,gameplays:allGps});
+      localStorage.setItem(key,JSON.stringify(existing));
+      toast('✓ 评分已记录（本地）');
+    }catch{toast('记录失败')}
+  }
+  ST.submitting=false;render();
 }
 
-// ════════════════════════════════════════════════
-// GAMEPLAY OPS
-// ════════════════════════════════════════════════
-function setScore(i,v){const g=ST.result.gameplays[i];g.score=g.score===v?v-1:v;if(g.score<0)g.score=0;render()}
-function toggleExp(i){ST.result.gameplays[i]._exp=!ST.result.gameplays[i]._exp;render()}
-function editGP(i){const g=ST.result.gameplays[i];g._snap=JSON.parse(JSON.stringify({tier:g.tier,category:g.category,id:g.id,name:g.name,description:g.description,flow:g.flow,specific_example:g.specific_example}));g._ed=true;render()}
-function saveEdit(i){
-  const g=ST.result.gameplays[i];
-  g.tier=document.getElementById('et_'+i).value;
-  g.category=document.getElementById('ec_'+i).value;
-  g.id=document.getElementById('ei_'+i).value.trim();
-  g.name=document.getElementById('en_'+i).value.trim();
-  g.description=document.getElementById('ed_'+i).value.trim();
-  g.flow=document.getElementById('ef_'+i).value.trim();
-  g.specific_example=document.getElementById('ee_'+i).value.trim();
-  g._ed=false;render();toast('已编辑');
+// ── SCORES PANEL ──
+function toggleScores(){
+  ST.showScores=!ST.showScores;
+  document.getElementById('scoresPanelBtn').style.background=ST.showScores?'var(--accent-bg)':'';
+  document.getElementById('scoresPanelBtn').style.color=ST.showScores?'var(--accent)':'';
+  renderScoresPanel();
 }
-function cancelEdit(i){ST.result.gameplays[i]._ed=false;render()}
-function delGP(i){if(!confirm('确定删除这个玩法？'))return;ST.result.gameplays.splice(i,1);render()}
-function addGP(){
-  const g={tier:'extend',category:'A',id:'',name:'新玩法',description:'',flow:'',specific_example:'',score:0,_exp:false,_ed:true};
-  g._snap={tier:'extend',category:'A',id:'',name:'新玩法',description:'',flow:'',specific_example:''};
-  ST.result.gameplays.push(g);render();
+function renderScoresPanel(){
+  const el=document.getElementById('scoresPanel');
+  if(!ST.showScores){el.style.display='none';return}
+  el.style.display='block';
+  const key='playble_shared_scores';
+  const scores=JSON.parse(localStorage.getItem(key)||'[]').reverse();
+  if(!scores.length){
+    el.innerHTML='<div style="background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);padding:20px;margin-bottom:16px;font-size:13px;color:var(--text3);text-align:center">还没有人提交过评分</div>';
+    return;
+  }
+  let h=`<div style="background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);padding:20px;margin-bottom:16px">
+  <div style="font-size:15px;font-weight:600;margin-bottom:16px">📊 所有人的评分记录 <span style="font-size:12px;font-weight:400;color:var(--text3)">共 ${scores.length} 条</span></div>`;
+  scores.forEach(s=>{
+    const dt=new Date(s.ts);
+    const time=`${dt.getMonth()+1}/${dt.getDate()} ${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`;
+    const chips=(s.gameplays||[]).map(g=>`<div class="sp-chip">${esc(g.name)} <span style="color:var(--amber)">${'★'.repeat(g.score)}${'☆'.repeat(5-g.score)}</span></div>`).join('');
+    h+=`<div class="sp-item"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:13px;font-weight:500">${esc(s.scene_label||'未知图片')}</span><span style="font-size:11px;color:var(--text3)">${esc(s.submitter)} · ${time}</span></div><div class="sp-chips">${chips}</div></div>`;
+  });
+  h+='</div>';
+  el.innerHTML=h;
 }
 
-// ════════════════════════════════════════════════
-// TOAST
-// ════════════════════════════════════════════════
+// ── TOAST ──
 function toast(m){const e=document.createElement('div');e.className='toast';e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2000)}
 
-// ════════════════════════════════════════════════
-// RENDER
-// ════════════════════════════════════════════════
+// ── RENDER ──
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
 
 function render(){
@@ -603,24 +491,74 @@ function render(){
   if(ST.loading)h+=`<div class="lc"><span class="spin"></span><span class="lmsg">${esc(ST.msg)}</span></div>`;
   if(ST.result&&ST.img){
     const r=ST.result;
-    // Scene card
     const tags=(r.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
     h+=`<div class="sc"><div class="sc-img"><img src="${ST.img.dataUrl}" alt=""></div><div><div class="sc-label">${esc(r.scene_label)}</div><div class="sc-log">${esc(r.rule_log)}</div><div class="tag-row">${tags}</div></div></div>`;
-    // History bar
-    const hist=lHist()[ST.img.hash];
-    if(hist?.records?.length>1){
-      const oa=hist.records.map(rec=>{const vs=(rec.snap.gameplays||[]).map(g=>g.score||0).filter(x=>x>0);return vs.length?(vs.reduce((a,b)=>a+b,0)/vs.length).toFixed(1):null}).filter(Boolean);
-      h+=`<div class="hb"><span class="hl">本地历史评分（${hist.records.length} 次）${hist.best?' ★有最佳版':''}</span><span class="hr">${oa.join(' → ')}</span></div>`;
-    }
-    // Gameplay grid
-    h+='<div class="glist">';
-    (r.gameplays||[]).forEach((g,i)=>{h+=renderCard(g,i)});
-    h+=`<div class="addslot" onclick="addGP()">+ 添加新玩法</div>`;
+
+    // tabs
+    h+='<div class="tabs-wrap">';
+    CAT_ORDER.forEach(cat=>{
+      const info=CATS[cat];
+      const gps=r.categories[cat]||[];
+      const active=ST.activeTab===cat;
+      const disabled=gps.length===0;
+      h+=`<div class="tab ${active?'active':''} ${disabled?'disabled':''}" style="--tab-color:${info.color}" onclick="switchTab('${cat}')">
+        <span class="tab-letter">${cat}</span>
+        <span class="tab-name">${info.name}</span>
+        <span class="tab-count">${disabled?'无匹配':info.zh+' · '+gps.length+'个'}</span>
+      </div>`;
+    });
+    // wild tab
+    const wilds=r.categories.wild||[];
+    const wildActive=ST.activeTab==='wild';
+    h+=`<div class="tab ${wildActive?'active':''} ${wilds.length===0?'disabled':''}" style="--tab-color:#BA7517" onclick="switchTab('wild')">
+      <span class="tab-letter">★</span>
+      <span class="tab-name">彩蛋</span>
+      <span class="tab-count">${wilds.length===0?'无匹配':'专属定制 · '+wilds.length+'个'}</span>
+    </div>`;
     h+='</div>';
-    // Submit bar
+
+    // cat info bar
+    const activeCat=ST.activeTab;
+    if(activeCat!=='wild'&&CATS[activeCat]){
+      const ci=CATS[activeCat];
+      h+=`<div class="cat-bar" style="--tab-color:${ci.color}"><div class="cat-bar-title">${activeCat} · ${ci.name} · ${ci.zh}</div><div class="cat-bar-desc">${esc(ci.desc)}</div></div>`;
+    }else if(activeCat==='wild'){
+      h+=`<div class="cat-bar" style="--tab-color:#BA7517"><div class="cat-bar-title">★ 彩蛋 · 专属定制</div><div class="cat-bar-desc">基于这张图独有的细节设计，只属于这张图，换一张图就失效。</div></div>`;
+    }
+
+    // gameplay cards for active tab
+    const activeGps=activeCat==='wild'?wilds:(r.categories[activeCat]||[]);
+    if(activeGps.length===0){
+      h+=`<div style="text-align:center;padding:30px;color:var(--text3);font-size:13px;background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl)">这张图在该大类下没有匹配到玩法</div>`;
+    }else{
+      h+='<div class="glist">';
+      activeGps.forEach((g,i)=>{
+        const expKey=activeCat+'_'+i;
+        const exp=ST.expanded[expKey];
+        const catColor=activeCat==='wild'?'#BA7517':(CATS[activeCat]?.color||'#534ab7');
+        const catBg=activeCat==='wild'?'#faeeda':`rgba(${hexToRgb(catColor)},.1)`;
+        const sv=g.score||0;
+        const dots=[1,2,3,4,5].map(n=>`<div class="sd ${n<=sv?'on':''}" onclick="setScore('${activeCat}',${i},${n})"></div>`).join('');
+        const hasDetail=g.flow||g.specific_example;
+        const detail=hasDetail&&exp?`<div>${g.flow?`<div class="gpsec">流程</div><div class="gpflow">${esc(g.flow)}</div>`:''} ${g.specific_example?`<div class="gpsec">具体示例</div><div class="gpeg">${esc(g.specific_example)}</div>`:''}</div>`:'';
+        const xbtn=hasDetail?`<button class="xbtn" onclick="toggleExp('${expKey}')">${exp?'▾ 收起':'▸ 详情'}</button>`:'';
+        h+=`<div class="gc ${activeCat==='wild'?'wild':''}">
+          <div class="gph"><div class="gptr">
+            <span class="gpb" style="background:${catBg};color:${catColor}">${esc(g.id||activeCat)}</span>
+            <span class="gpname">${esc(g.name)}</span>
+          </div></div>
+          <div class="gpdesc">${esc(g.description)}</div>
+          ${xbtn}${detail}
+          <div class="sr"><span class="slbl">评分</span><div class="sdots">${dots}</div></div>
+        </div>`;
+      });
+      h+='</div>';
+    }
+
+    // submit bar
     h+=`<div class="submit-bar">
       <input class="name-input" id="submitterName" type="text" placeholder="你的名字（选填）" maxlength="20">
-      <button class="btn green" onclick="submitScore()" ${ST.submitting?'disabled':''}>
+      <button class="btn grn" onclick="submitScore()" ${ST.submitting?'disabled':''}>
         ${ST.submitting?'<span class="spin"></span> 提交中...':'↑ 提交评分'}
       </button>
       <button class="btn" onclick="regen()" ${ST.loading?'disabled':''}>↻ 重新生成</button>
@@ -630,28 +568,12 @@ function render(){
   ct.innerHTML=h;
 }
 
-function renderCard(g,i){
-  const isW=g.tier==='wild';
-  const cat=(g.category||'').toUpperCase();
-  const bc=isW?'bW':'b'+cat;
-  const bt=isW?'★':(g.id||cat);
-  if(g._ed){
-    const s=g._snap||{};
-    const cats=['A','B','C','D','E','F','G','H'],tiers=['core','extend','wild'];
-    return`<div class="gc" style="grid-column:1/-1"><div class="ea"><div class="fr"><select id="et_${i}">${tiers.map(x=>`<option ${x===s.tier?'selected':''}>${x}</option>`).join('')}</select><select id="ec_${i}">${cats.map(x=>`<option ${x===(s.category||'').toUpperCase()?'selected':''}>${x}</option>`).join('')}</select><input id="ei_${i}" type="text" value="${esc(s.id)}" placeholder="子玩法 ID"></div><label>玩法名称</label><input id="en_${i}" type="text" value="${esc(s.name)}"><label>一句话描述</label><textarea id="ed_${i}">${esc(s.description)}</textarea><label>交互流程</label><textarea id="ef_${i}">${esc(s.flow)}</textarea><label>具体示例</label><textarea id="ee_${i}">${esc(s.specific_example)}</textarea><div class="ea-btns"><button class="btn pri" onclick="saveEdit(${i})">保存</button><button class="btn" onclick="cancelEdit(${i})">取消</button></div></div></div>`;
-  }
-  const sv=g.score||0;
-  const dots=[1,2,3,4,5].map(n=>`<div class="sd ${n<=sv?'on':''}" onclick="setScore(${i},${n})"></div>`).join('');
-  const hasDetail=g.flow||g.specific_example;
-  const exp=g._exp;
-  const detail=hasDetail?`<div>${g.flow?`<div class="gpsec">流程</div><div class="gpflow">${esc(g.flow)}</div>`:''} ${g.specific_example?`<div class="gpsec">具体示例</div><div class="gpeg">${esc(g.specific_example)}</div>`:''}</div>`:'';
-  const expandBtn=hasDetail?`<button class="xbtn" onclick="toggleExp(${i})">${exp?'▾ 收起':'▸ 详情'}</button>`:'';
-  return`<div class="gc ${isW?'wild':''}"><div class="gph"><div class="gptr"><span class="gpb ${bc}">${esc(bt)}</span><span class="gptier">${g.tier||''}</span><span class="gpname">${esc(g.name)}</span></div><div class="gpact"><button class="ib" onclick="editGP(${i})" title="编辑">✎</button><button class="ib del" onclick="delGP(${i})" title="删除">✕</button></div></div><div class="gpdesc">${esc(g.description)}</div>${expandBtn}${exp?detail:''}<div class="sr"><span class="slbl">评分</span><div class="sdots">${dots}</div></div></div>`;
+function hexToRgb(hex){
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  return`${r},${g},${b}`;
 }
 
-// ════════════════════════════════════════════════
-// INIT
-// ════════════════════════════════════════════════
+// ── INIT ──
 checkConfig();updStats();
 if(!gSett().apiKey)openSettings();
 </script>
