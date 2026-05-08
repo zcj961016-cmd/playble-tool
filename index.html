@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playble · 图片玩法验证工具</title>
+<title>Playble · 玩法验证工具</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -69,10 +69,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue'
 .up-text{font-size:14px;margin-bottom:4px}
 .up-hint{font-size:12px;color:var(--text3)}
 /* loading/error */
-.lc{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);padding:24px;margin-bottom:20px;text-align:center}
+.lc{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--rl);padding:28px 24px;margin-bottom:20px}
 .spin{display:inline-block;width:18px;height:18px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin-right:8px;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
 .lmsg{display:inline-block;vertical-align:middle;font-size:13px;color:var(--text2)}
+.lsteps{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+.lstep{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--r);font-size:12px}
+.lstep.done{background:var(--green-bg);color:var(--green)}
+.lstep.active{background:var(--accent-bg);color:var(--accent)}
+.lstep.wait{background:var(--bg3);color:var(--text3)}
+.lstep-icon{font-size:14px;flex-shrink:0;width:20px;text-align:center}
+.ltips{margin-top:16px;padding:10px 14px;background:var(--amber-bg);border-radius:var(--r);font-size:11px;color:var(--amber);line-height:1.7}
 .ec{background:var(--bg2);border:.5px solid var(--red);border-left:3px solid var(--red);border-radius:var(--r);padding:14px 16px;margin-bottom:16px}
 .et{font-size:13px;font-weight:500;color:var(--red);margin-bottom:4px}
 .eb{font-size:12px;color:var(--text2);line-height:1.65;word-break:break-word;white-space:pre-wrap}
@@ -218,7 +225,7 @@ const CAT_ORDER = ['A','B','C','D','E','F','G','H'];
 const SK='playble_api_v1', HK='playble_hist_v1';
 let _AT='openai';
 function lSett(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch{return{}}}
-function gSett(){const s=lSett();return{apiType:s.apiType||'anthropic',baseUrl:s.baseUrl||'',apiKey:s.apiKey||'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',model:s.model||'claude-sonnet-4-6'}}
+function gSett(){const s=lSett();return{apiType:s.apiType||'openai',baseUrl:s.baseUrl||'https://xxapi.ai789.icu/v1',apiKey:s.apiKey||'sk-HFnCX9APUDTNSsZN',model:s.model||'claude-opus-4-7'}}
 function openSettings(){
   const s=gSett();_AT=s.apiType;
   document.getElementById('iUrl').value=s.baseUrl;
@@ -494,7 +501,37 @@ const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 function render(){
   const ct=document.getElementById('content');let h='';
   if(ST.err)h+=`<div class="ec"><div class="et">出错了</div><div class="eb">${esc(ST.err)}</div></div>`;
-  if(ST.loading)h+=`<div class="lc"><span class="spin"></span><span class="lmsg">${esc(ST.msg)}</span></div>`;
+  if(ST.loading){
+    const steps=[
+      {icon:'🖼',text:'压缩图片，保护你的隐私（图片不会上传到任何服务器）'},
+      {icon:'🔍',text:'AI 识别图片内容：场景、人物、物品、情绪、独特细节'},
+      {icon:'🧠',text:'按 A-H 八大类规则逐一匹配适合这张图的玩法'},
+      {icon:'✨',text:'生成专属彩蛋：寻找只属于这张图的独有互动'},
+      {icon:'📝',text:'整理输出：为每个玩法生成描述、流程和具体示例'},
+    ];
+    const msgMap={
+      '正在压缩图片...':0,
+      'AI 正在分析图片，按大类匹配玩法，约 15-20 秒...':1,
+      '第一次失败，正在自动重试...':1,
+      '正在重新生成...':1,
+    };
+    const activeIdx=msgMap[ST.msg]??1;
+    const stepsHtml=steps.map((s,i)=>{
+      const cls=i<activeIdx?'done':i===activeIdx?'active':'wait';
+      const icon=i<activeIdx?'✓':i===activeIdx?'<span class="spin" style="width:14px;height:14px;margin:0"></span>':s.icon;
+      return`<div class="lstep ${cls}"><span class="lstep-icon">${icon}</span><span>${s.text}</span></div>`;
+    }).join('');
+    h+=`<div class="lc">
+      <div style="text-align:center;margin-bottom:4px"><span class="spin"></span><span class="lmsg">${esc(ST.msg)}</span></div>
+      <div class="lsteps">${stepsHtml}</div>
+      <div class="ltips">
+        💡 <strong>小贴士</strong><br>
+        · 多人同时使用时响应可能需要 45-60 秒，请耐心等待<br>
+        · 如果超过 60 秒没有响应，可以重新上传图片重试<br>
+        · 图片越清晰、内容越丰富，AI 识别到的玩法越多
+      </div>
+    </div>`;
+  }
   if(ST.result&&ST.img){
     const r=ST.result;
     const tags=(r.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
